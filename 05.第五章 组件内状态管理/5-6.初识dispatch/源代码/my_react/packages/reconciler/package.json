@@ -1,0 +1,10 @@
+{
+  "name": "reconciler",
+  "version": "1.0.0",
+  "description": "reconciler",
+  "module": "index.ts",
+  "dependencies": {
+    "react": "workspace:*",
+    "shared": "workspace:*"
+  }
+}

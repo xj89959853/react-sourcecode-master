@@ -1,0 +1,48 @@
+export type Instance = HTMLElement;
+export type TextInstance = Text;
+/**
+ * 创建文本节点
+ * @param text 
+ * @returns TextInstance
+ */
+export function createTextInstance(text:string){
+    return document.createTextNode(text);
+}
+/**
+ * 创建DOM节点
+ * @param type 
+ * @returns instance
+ */
+export function createInstance(type:string){
+    return document.createElement(type);
+}
+
+/**
+ * 关联dom节点之间的关系
+ * @param parent 父节点
+ * @param child 子节点
+ */
+export function appendChild(parent:Instance,child:Instance){
+    parent.appendChild(child);
+}
+
+/**
+ * 设置属性
+ * @param dom 
+ * @param props 
+ */
+export function setInitialProps(dom:Instance,props:any){
+    for(const prop in props){
+        if(!props.hasOwnProperty(prop)){
+            continue;
+        }
+        if(prop === 'children'){
+            if(typeof props.children === 'string'){
+                dom.textContent = props.children;
+            }else{
+                continue;
+            }
+        }
+        dom.setAttribute(prop,props[prop]);
+    }
+}
